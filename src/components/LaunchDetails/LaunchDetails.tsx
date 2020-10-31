@@ -28,7 +28,7 @@ const LaunchDetails: React.FC<Props> = ({ data }) => {
               data.launch.links.flickr_images.map(image =>
                 image ? <Image style={{
                   margin: '10px',
-                }} key={image} src={image} width={`45%`} alt={image} /> : null
+                }} key={image} src={image} width={`40%`} alt={image} /> : null
               )
             }
           </div>

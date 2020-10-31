@@ -7,5 +7,6 @@ query launches {
     launch_success
     mission_name
     upcoming
+    flight_number
   }
 }`
