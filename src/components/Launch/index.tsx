@@ -1,18 +1,24 @@
 import React from 'react'
-import {useLaunchesQuery} from '../../generated/graphql'
+import { useLaunchesQuery } from '../../generated/graphql'
 import Launch from './Launch';
+import { Skeleton } from 'antd';
 
 const LaunchContainer = () => {
-  const {data, error, loading} = useLaunchesQuery();
+  const { data, error, loading } = useLaunchesQuery();
 
-  if(loading) {
-    return <div>Data is loading</div>
+  if (loading) {
+    return <>
+      <Skeleton active />
+      <Skeleton active />
+      <Skeleton active />
+      <Skeleton active />
+    </>
   }
 
   if (error || !data) {
     return <div>there was an error</div>
   }
- 
+
   return <Launch data={data} />
 }
 

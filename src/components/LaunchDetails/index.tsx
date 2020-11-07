@@ -3,8 +3,8 @@ import { useLaunchInfoQuery } from '../../generated/graphql';
 import LaunchDetails from './LaunchDetails';
 import { Typography } from 'antd';
 import { GlobalContext } from '../../context/GlobalState';
+import { Skeleton } from 'antd';
 
-// import {useParams} from 'react-router-dom'
 const { Title } = Typography;
 
 const LaunchDetailsContainer = () => {
@@ -13,7 +13,10 @@ const LaunchDetailsContainer = () => {
 
   const { data, error, loading } = useLaunchInfoQuery({ variables: { id: flightNumber.toString() } });
   if (loading) {
-    return <Title level={2}>Data i loading</Title>
+    return <>
+      <Skeleton active />
+      <Skeleton active />
+    </>
   }
 
   if (error) {

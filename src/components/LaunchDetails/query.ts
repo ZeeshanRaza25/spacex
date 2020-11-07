@@ -9,6 +9,7 @@ export const QUERY_LAUNCH_DETAILS = gql`
       launch_success
       launch_year
       upcoming
+      launch_date_local
       launch_site {
         site_name
       }
@@ -19,6 +20,9 @@ export const QUERY_LAUNCH_DETAILS = gql`
       links {
         video_link
         flickr_images
+        article_link
+        wikipedia
       }
     }
 }`
+

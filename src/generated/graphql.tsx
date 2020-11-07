@@ -740,7 +740,14 @@ export type LaunchesQuery = (
   { __typename?: 'Query' }
   & { launches?: Maybe<Array<Maybe<(
     { __typename?: 'Launch' }
-    & Pick<Launch, 'launch_year' | 'launch_success' | 'mission_name' | 'upcoming' | 'flight_number'>
+    & Pick<Launch, 'launch_year' | 'launch_success' | 'mission_name' | 'upcoming' | 'flight_number' | 'mission_id' | 'details' | 'launch_date_local'>
+    & { launch_site?: Maybe<(
+      { __typename?: 'LaunchSite' }
+      & Pick<LaunchSite, 'site_name'>
+    )>, links?: Maybe<(
+      { __typename?: 'LaunchLinks' }
+      & Pick<LaunchLinks, 'video_link' | 'article_link' | 'wikipedia' | 'flickr_images'>
+    )> }
   )>>> }
 );
 
@@ -753,7 +760,7 @@ export type LaunchInfoQuery = (
   { __typename?: 'Query' }
   & { launch?: Maybe<(
     { __typename?: 'Launch' }
-    & Pick<Launch, 'flight_number' | 'details' | 'mission_name' | 'launch_success' | 'launch_year' | 'upcoming'>
+    & Pick<Launch, 'flight_number' | 'details' | 'mission_name' | 'launch_success' | 'launch_year' | 'upcoming' | 'launch_date_local'>
     & { launch_site?: Maybe<(
       { __typename?: 'LaunchSite' }
       & Pick<LaunchSite, 'site_name'>
@@ -762,7 +769,7 @@ export type LaunchInfoQuery = (
       & Pick<LaunchRocket, 'rocket_name' | 'rocket_type'>
     )>, links?: Maybe<(
       { __typename?: 'LaunchLinks' }
-      & Pick<LaunchLinks, 'video_link' | 'flickr_images'>
+      & Pick<LaunchLinks, 'video_link' | 'flickr_images' | 'article_link' | 'wikipedia'>
     )> }
   )> }
 );
@@ -776,6 +783,18 @@ export const LaunchesDocument = gql`
     mission_name
     upcoming
     flight_number
+    mission_id
+    details
+    launch_site {
+      site_name
+    }
+    launch_date_local
+    links {
+      video_link
+      article_link
+      wikipedia
+      flickr_images
+    }
   }
 }
     `;
@@ -813,6 +832,7 @@ export const LaunchInfoDocument = gql`
     launch_success
     launch_year
     upcoming
+    launch_date_local
     launch_site {
       site_name
     }
@@ -823,6 +843,8 @@ export const LaunchInfoDocument = gql`
     links {
       video_link
       flickr_images
+      article_link
+      wikipedia
     }
   }
 }
