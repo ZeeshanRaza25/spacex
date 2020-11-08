@@ -12,22 +12,26 @@ const App = () => {
   return (
     <GlobalProvider>
       <Layout className="site-layout">
-        <Header
-          style={{ position: 'relative', top: 0, textAlign: 'center', width: '100%', backgroundColor: 'white', fontSize: 20, fontWeight: 'bold' }} >
-          <h1>
-            SpaceX Launch Programs
-          </h1>
-        </Header>
+        <Row>
+          <Col span={24}>
+            <Header
+              style={{ position: 'relative', top: 0, textAlign: 'center', width: '100%', backgroundColor: 'white', fontSize: 18, fontWeight: 'bold' }} >
+              <h4>
+                SpaceX Launch Programs
+              </h4>
+            </Header>
+          </Col>
+        </Row>
         <Layout>
           <Row>
-            <Col xs={24} sm={6} md={6} lg={6} xl={6}>
+            <Col xs={24} sm={24} md={6} lg={6} xl={6}>
               <Launch />
             </Col>
-            <Col xs={24} sm={18} md={18} lg={18} xl={18}>
-              <Content>
+            <Content>
+              <Col xs={24} sm={24} md={18} lg={18} xl={18}>
                 <LaunchDetails />
-              </Content>
-            </Col>
+              </Col>
+            </Content>
           </Row>
         </Layout>
         <Footer
